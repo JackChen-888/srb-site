@@ -198,6 +198,11 @@
         </div>
       </div>
     </div>
+    <NuxtLink to="/user/apply" v-if="borrowerStatus === 2">
+      <el-button style="margin-top:20px;" type="success">
+        我要借款
+      </el-button>
+    </NuxtLink>
   </div>
 </template>
 <script>
@@ -227,7 +232,7 @@ export default {
       // debugger
       this.submitBtnDisabled = true
       this.$axios
-          .$post('/api/core/borrower/save', this.borrower)
+          .$post('/api/core/borrower/auth/save', this.borrower)
           .then((response) => {
             this.active = 1
           })
